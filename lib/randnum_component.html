@@ -1,0 +1,8 @@
+<div>
+<h1>随机数点名webapp</h1>
+<material-button style="background-color:#0099cc;color:white" (click)="clickButton()">点击生成随机数</material-button>:
+<label>(from 1 to 
+<material-input autoFocus floatingLabel style="width:5%" [(ngModel)]="number">
+</material-input>)</label>
+<h2 *ngIf="click">抽到的学号：{{randnum}},{{name}}</h2>
+</div>

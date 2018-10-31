@@ -1,0 +1,77 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+
+
+<div>
+  <material-input label="搜索了解更多信息?"
+                  autoFocus floatingLabel style="width:80%"
+                  [(ngModel)]="newTodo"
+                  (keyup.enter)="add()">
+  </material-input>
+
+  <material-fab mini raised
+                (trigger)="add()"
+                [disabled]="newTodo.isEmpty">
+    <material-icon icon="add"></material-icon>
+  </material-fab>
+</div>
+
+<p *ngIf="items.isEmpty">
+  Welcome
+</p>
+
+<div *ngIf="items.isNotEmpty">
+  <ul>
+      <li *ngFor="let item of items; let i=index">
+        <material-checkbox #done materialTooltip="Mark item as done">
+        </material-checkbox>
+        <span [class.done]="done.checked">{{item}}</span>
+        <material-fab mini (trigger)="remove(i)">
+          <material-icon icon="delete"></material-icon>
+        </material-fab>
+      </li>
+  </ul>
+</div>
+
+
+
+
+
+
+<material-tab-panel>
+  <material-tab label="学校简介">
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<span>华东师范大学</span>（East China Normal University），简称“华东师大”，位于中国上海，由中华人民共和国教育部直属，位列世界一流大学建设高校、“985工程”、“211工程”，入选国家“2011计划”、“111计划”和“国家建设高水平大学公派研究生项目”，“长三角高校合作联盟”、“金砖国家大学联盟”、“亚太高校书院联盟”、“中日人文交流大学联盟”成员，设有研究生院和国家大学科技园，是教育部、上海市人民政府和国家海洋局共建的全国重点大学。</p>
+    
+  </material-tab>
+  <material-tab label="师资力量">
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;截至2017年9月，学校有教职工4105人，其中专任教师2269人。教授及其他高级职称教师1815人，其中中国科学院、中国工程院院士（含双聘院士）12人，中组部“千人计划”（含“青年千人”）入选者38人，教育部“长江学者奖励计划”特聘教授及讲座教授39人，国家杰出青年科学基金获得者35人，国家“万人计划”领军人才及国家教学名师入选者6人，人社部“新世纪百千万人才工程”国家级人选11人，国家优秀青年科学基金获得者19人，中组部“青年拔尖人才”入选者6人，教育部“青年长江学者”7人，上海市“东方学者”入选者30人，上海市“领军人才及后备”入选者23人，上海市“千人计划”入选者18人，“紫江学者计划”入选者131人，“双百人才计划”入选者（含紫江优秀青年学者、紫江青年学者）129人次。</p>
+  </material-tab>
+  <material-tab label="知名校友">
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;20世纪50年代初高校调整后，许杰、徐震堮、施蛰存、徐中玉、钱谷融、程俊英、周子美、余振（李毓珍）、万云骏、史存直、彭鹏、林祥楣等一大批一流学者均执教于华东师大。从钱谷融先生引发全国讨论的“文学是人学”命题、王元化先生撰就具有里程碑意义的美学著作，到20世纪80年代中期文学研究方法论大讨论，20世纪90年代人文精神论争等，中文系都在学术界赢得了巨大声誉，获得了“中国批评家摇篮”的美誉。70年代，华东师大西语系（今外语学院）还有一个雅号叫“大使培训班”，言下之意是出过许多大使，同时，这个系也有意为国家的外交战线培养一批优秀的人才。</p>
+  </material-tab>
+</material-tab-panel>
+<br>
+<div>
+  <material-chips>
+    <material-chip [removable]="false">校训</material-chip>
+    
+  </material-chips>
+<p>“求实创造，为人师表”</p>
+</div>
+
+
+<div>
+  <material-chips>
+    <material-chip [removable]="false">校树校花</material-chip>
+    
+  </material-chips>
+<p>华东师大的校树是水杉，是校内的分布最多的树种。
+  <br>华东师大的校花是荷花，中山北路校区丽娃河等水系里多有种植，闵行校区的樱桃河里亦有种植。</p>
+</div>
+
+<div>
+  <material-chips>
+    <material-chip [removable]="false">吉祥物</material-chip>
+    
+  </material-chips>
+<p>华东师范大学吉祥物为“师大狮”，其创意取自校名中“师”字谐音，以及作为“百兽之王”其蕴含的特征元素。</p>
+</div>
