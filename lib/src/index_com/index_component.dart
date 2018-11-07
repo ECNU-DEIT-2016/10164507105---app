@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
 
-import 'todo_list_service.dart';
+import 'index_service.dart';
 
 @Component(
-  selector: 'todo-list',
-  styleUrls: ['todo_list_component.css'],
-  templateUrl: 'todo_list_component.html',
+  selector: 'index-com',
+  styleUrls: ['index_component.css'],
+  templateUrl: 'index_component.html',
   directives: [
     MaterialCheckboxComponent,
     MaterialFabComponent,
@@ -20,19 +20,19 @@ import 'todo_list_service.dart';
     NgFor,
     NgIf,
   ],
-  providers: [const ClassProvider(TodoListService)],
+  providers: [const ClassProvider(IndexService)],
 )
-class TodoListComponent implements OnInit {
-  final TodoListService todoListService;
+class IndexComponent implements OnInit {
+  final IndexService indexService;
 
   List<String> items = [];
   String newTodo = '';
 
-  TodoListComponent(this.todoListService);
+  IndexComponent(this.indexService);
 
   @override
   Future<Null> ngOnInit() async {
-    items = await todoListService.getTodoList();
+    items = await indexService.getTodoList();
   }
 
   void add() {

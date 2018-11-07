@@ -1,13 +1,13 @@
 @TestOn('browser')
 import 'package:angular_test/angular_test.dart';
 import 'package:test/test.dart';
-import 'package:firstapp/app_component2.dart';
-import 'package:firstapp/app_component2.template.dart' as ng2;
+import 'package:firstapp/app_component.dart';
+import 'package:firstapp/app_component.template.dart' as ng2;
 
 void main() {
   final testBed =
-      NgTestBed.forComponent<AppComponent2>(ng2.AppComponent2NgFactory);
-  NgTestFixture<AppComponent2> fixture;
+      NgTestBed.forComponent<AppComponent>(ng2.AppComponentNgFactory);
+  NgTestFixture<AppComponent> fixture;
 
   setUp(() async {
     fixture = await testBed.create();
