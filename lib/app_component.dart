@@ -1,15 +1,15 @@
 import 'package:angular/angular.dart';
 
-import 'src/index_com/index_component.dart';
+import 'src/rand_num/randnum_component.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
 // Components info: https://webdev.dartlang.org/components
 //zhushi
 @Component(
-  selector: 'my-app',
+  selector: 'rand-num',
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: [IndexComponent],
+  directives: [RandNumComponent],
 )
 class AppComponent {
   // Nothing here yet. All logic is in TodoListComponent.
