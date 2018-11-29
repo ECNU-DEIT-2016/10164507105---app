@@ -1,0 +1,49 @@
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  line-height: 3em;
+}
+
+li:hover {
+  background-color: #EEEEEE;
+}
+
+li material-checkbox {
+  vertical-align: middle;
+}
+
+li material-fab {
+  float: right;
+  vertical-align: middle;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+
+p{
+  line-height: 2;
+  color: #333;
+  font-family: "FangSong","STSong","Microsoft Yaheis";
+}
+
+p span{
+  font-size: 18px;
+  font-weight: bold;
+
+}
+material-chips{
+  text-align: center;
+}
+
+
+material-chip{
+
+  background-color: #903;
+  color:white;
+
+}
