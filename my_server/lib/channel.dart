@@ -29,7 +29,7 @@ class MyServerChannel extends ApplicationChannel {
     // Prefer to use `link` instead of `linkFunction`.
     // See: https://aqueduct.io/docs/http/request_controller/
     router
-      .route("/numbers/[:id]").link(()=>MyController());
+      .route("/students/[:num]").link(()=>MyController());
       ;
 
     return router;
@@ -37,30 +37,54 @@ class MyServerChannel extends ApplicationChannel {
 }
 class MyController extends ResourceController {
   // final List<String> things = ['thing1', 'thing2', 'things3', 'things4', 'things5'];
-  List<int> nums = [];
+  List<String> names = [];
 
-  MyController(){
-    getRandom(100);
+ MyController(){
+    connect(names);
   }
 
   @Operation.get()
   Future<Response> getThings() async {
     // getRandom(10);
-    return Response.ok(nums);
+    return Response.ok(names);
   }
 
-  @Operation.get('id')
-  Future<Response> getThing(@Bind.path('id') int id) async {
-    // getRandom(10);
-    if (id < 0 || id >= nums.length) {
-      return Response.notFound();
+  @Operation.get('num')
+  Future<Response> getStudent(@Bind.path('num') int num) async {
+    List<int> nums = getRandom(num, names.length);
+    List<String> res = [];
+    for(int i=0; i<nums.length; i++){
+      res.add(names[nums[i]]);
     }
-    return Response.ok(nums[id]);
-  }
+    return Response.ok(res);
+    }
 
-  void getRandom(int num){
+  List<int> getRandom(int num, int maxlen){
+    List<int> nums=[];
      Random random = new Random();
-     for(int i=0; i<10; i++)
-        nums.add(random.nextInt(num));
-  }//close getRandom()
+     for(int i=0; i<num; i++){
+       int rand = random.nextInt(maxlen);
+       if(nums.contains(rand)){
+         i--;
+       }else{
+         nums.add(rand);
+       }
+     }   
+      return nums;
+  }
+}
+
+
+Future connect(List<String> names) async{
+  var s = ConnectionSettings(
+    user: "root",
+    password: "hello",
+    host: "localhost",
+    port: 3306,
+    db: "example",
+  );
+  var conn = await MySqlConnection.connect(s);
+  Results result =
+      await conn.execute('SELECT id,name,sex FROM student');
+  result.forEach( (f) => names.add(f.toString()) );
 }
