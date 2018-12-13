@@ -77,11 +77,11 @@ class MyController extends ResourceController {
 
 Future connect(List<String> names) async{
   var s = ConnectionSettings(
-    user: "root",
-    password: "hello",
-    host: "localhost",
+    user: "deit2016",
+    password: "deit2016@ecnu",
+    host: "www.muedu.org",
     port: 3306,
-    db: "example",
+    db: "deit2016db_10164507105",
   );
   var conn = await MySqlConnection.connect(s);
   Results result =
